@@ -2,7 +2,7 @@
 
 Process a CSV file incrementally. Useful when a file is large or you can't (or don't want to) store it first.
 
-## How to install 
+## How to install
 1. `npm install -g meteorite` (if not already installed)
 2. `mrt add incr-csv`
 
@@ -26,13 +26,13 @@ The options are optional. Available options and defaults are:
   push(string);
 ```
 
-Push a string into the parser for processing. The string should be a valid CSV fragment, but does not need to be a complete row. 
+Push a string into the parser for processing. The string should be a valid CSV fragment, but does not need to be a complete row.
 
 ```
   finish();
 ```
 
-Since the CSV specification allow the last line of the input to be unterminated calling finish() will flush any remaining data.
+Since the CSV specification allows the last line of the input to be unterminated calling finish() will flush any remaining data.
 
 ## Example:
 
@@ -40,7 +40,7 @@ This example incrementally parses a CSV file uploaded using [EventedMind's File 
 
 ```javascript
 if (Meteor.isServer) {
-  // array of parsers for multi-file upload.  
+  // array of parsers for multi-file upload.
   var csvs = {};
 
   Meteor.methods({
@@ -72,6 +72,7 @@ if (Meteor.isServer) {
 ```
 
 ## Credit:
-The parser is adapted from cvsToArray v2.1 by Daniel Tillin.
+
+The parser is adapted from cvsToArray v2.1 by Daniel Tillin:
 
 https://code.google.com/p/csv-to-array/

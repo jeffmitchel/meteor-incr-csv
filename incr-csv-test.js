@@ -6,7 +6,7 @@ var expect = [
 ];
 
 var input = [
-  'FirstName,"LastName",Email\r\nAlbert,Einstein,emc2@princeton.edu\r',   // terminator on check boundary
+  'FirstName,"LastName",Email\r\nAlbert,Einstein,emc2@princeton.edu\r',   // terminator on chunk boundary
   '\nMarie,Curie,marie.curie@sorbonne.fr\r\nMax,Planck,max@mpg.de'        // no terminator on last row
 ];
 
