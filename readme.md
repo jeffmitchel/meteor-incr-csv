@@ -19,7 +19,7 @@ OnRecord is called once for each row and is passed the parsed record as an array
 
 Available options and defaults are:
 ```
-  quoteCharacter:  '"',                        // length must be 1
+  quoteCharacter:  '"',                       // length must be 1
   fieldSeparator:  ',',                       // length must be 1
   recordSeparator: '\r\n',                    // length must be 1 or 2
   onRecord:        function (row, index) {}
