@@ -1,6 +1,6 @@
 # Meteor Incremental CSV Package
 
-Process a CSV file incrementally. Useful when a file is large or you can't (or don't want to) store it first.
+Process a CSV file incrementally on either the client or server. Useful when a file is large or you can't (or don't want to) store it first.
 
 ## How to install
 1. `npm install -g meteorite` (if not already installed)
@@ -12,7 +12,7 @@ Process a CSV file incrementally. Useful when a file is large or you can't (or d
 
 ```
 IncrmentalCSV(function onRecord(row, index));
-IncrmentalCSV(object options)
+IncrmentalCSV(object options);
 ```
 
 OnRecord is called once for each row and is passed the parsed record as an array of strings and the zero-based ordinal index of the row.
@@ -55,7 +55,7 @@ if (Meteor.isServer) {
           function(rec, idx) {
             // process your data here.
             // idx is zero-based, skip if there's a header.
-            console.log(idx+1, "->", rec);
+            console.log(idx, "->", rec);
           }
         );
       }
