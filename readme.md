@@ -8,17 +8,21 @@ Process a CSV file incrementally. Useful when a file is large or you can't (or d
 
 ## Documentation:
 
-### Constructor:
+### Constructors:
 
-IncrmentalCSV(function callback(row, index), object options);
-
-Callback is called once for each row and is passed the row as an array of strings and the zero-based ordinal index of the row.
-
-The options are optional. Available options and defaults are:
 ```
-  - quoteCharacter  = '"';      // length must be 1
-  - fieldSeparator  = ',';      // length must be 1
-  - recordSeparator = '\r\n';   // length must be 1 or 2
+IncrmentalCSV(function onRecord(row, index));
+IncrmentalCSV(object options)
+```
+
+OnRecord is called once for each row and is passed the parsed record as an array of strings and the zero-based ordinal index of the row.
+
+Available options and defaults are:
+```
+  quoteCharacter:  '"',                        // length must be 1
+  fieldSeparator:  ',',                       // length must be 1
+  recordSeparator: '\r\n',                    // length must be 1 or 2
+  onRecord:        function (row, index) {}
 ```
 ### Methods:
 
@@ -36,7 +40,7 @@ Since the CSV specification allows the last line of the input to be unterminated
 
 ## Example:
 
-This example incrementally parses a CSV file uploaded using [EventedMind's File Uploader](https://github.com/EventedMind/meteor-file).
+Incrementally parse a CSV file uploaded using Chris Mather's [EventedMind File Uploader](https://github.com/EventedMind/meteor-file).
 
 ```javascript
 if (Meteor.isServer) {

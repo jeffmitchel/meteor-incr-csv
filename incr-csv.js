@@ -1,11 +1,16 @@
 
-IncrementalCSV = function(callback, options) {
-  this.callback = callback;
+IncrementalCSV = function(options) {
+  console.log(typeof(options));
+  if (options && typeof(options) === 'function') {
+    this.options = {
+      onRecord: options
+    };
+  } else {
+    this.options = options || {};
+  }
 
-  if(! this.callback || typeof(this.callback) != 'function')
-    this.callback = function(row, idx) {};
-
-  this.options = options || {};
+  if(! this.options.onRecord || typeof(this.options.onRecord) != 'function')
+    this.options.onRecord = function(row, idx) {};
 
   if(! this.options.quoteCharacter || this.options.quoteCharacter.length != 1)
     this.options.quoteCharacter = '"';
@@ -27,17 +32,21 @@ IncrementalCSV = function(callback, options) {
 IncrementalCSV.prototype = {
   constructor: IncrementalCSV,
 
+  push: function(input) {
+    this._parse(input);
+  },
+
   finish: function() {
     var self = this;
     if(! (self.record.length === 1 && self.record[0].length === 0))
-      self.callback(self.record, self.recordIndex);
+      self.options.onRecord(self.record, self.recordIndex);
   },
 
   // ---------------------------------------------------------------------
   // Adapted from csvToArray v2.1 by Daniel Tillin
   // https://code.google.com/p/csv-to-array/
   // ---------------------------------------------------------------------
-  push: function (input) {
+  _parse: function (input) {
 
     var self = this;
 
@@ -89,7 +98,7 @@ IncrementalCSV.prototype = {
           else if (! this.options.recordSeparator.charAt(1) ||
             (this.options.recordSeparator.charAt(1) && this.options.recordSeparator.charAt(1) == input.charAt(idx + 1))) {
 
-            self.callback(self.record, self.recordIndex);
+            self.options.onRecord(self.record, self.recordIndex);
 
             ++self.recordIndex;
             self.record = [''];
