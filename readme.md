@@ -2,7 +2,7 @@
 
 Process a CSV file incrementally on either the client or server. Useful when a file is large or you can't (or don't want to) store it first.
 
-## How to install
+## Installation:
 1. `npm install -g meteorite` (if not already installed)
 2. `mrt add incr-csv`
 
