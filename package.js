@@ -1,9 +1,10 @@
 Package.describe({
-  summary: "Incremental CSV Parser for Meteor"
+  summary: "Incremental CSV parser for Meteor"
 });
 
 Package.on_use(function (api) {
   api.add_files("incr-csv.js", ['client', 'server']);
+  api.export && api.export('IncrementalCSV', ['client', 'server']);
 });
 
 Package.on_test(function (api) {
