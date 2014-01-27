@@ -11,8 +11,8 @@ Process a CSV file incrementally on either the client or server. Useful when a f
 ### Constructors:
 
 ```
-IncrmentalCSV(function onRecord(row, index));
-IncrmentalCSV(object options);
+IncrementalCSV(function onRecord(row, index));
+IncrementalCSV(object options);
 ```
 
 OnRecord is called once for each row and is passed the parsed record as an array of strings and the zero-based ordinal index of the row.
