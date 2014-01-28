@@ -3,6 +3,6 @@
   "description": "Meteor Incremental CSV Package",
   "homepage": "https://github.com/jeffmitchel/meteor-incr-csv",
   "author": "Jeff Mitchell  (http://3doto.com)",
-  "version": "0.2.4",
+  "version": "0.2.6",
   "git": "https://github.com/jeffmitchel/meteor-incr-csv.git"
 }
