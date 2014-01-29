@@ -1,18 +1,18 @@
 var expect = [
-  ["FirstName", "LastName", "Email"],
-  ["Albert",    "Einstein", "emc2@princeton.edu"],
-  ["Marie",     "Curie",    "marie.curie@sorbonne.fr"],
-  ["Max",       "Planck",   "max@mpg.de"]
+  ["FirstName", "LastName",  "Email"],
+  ["Albert",    "Einstein",  "emc2@princeton.edu"],
+  ["Marie",     "Curie",     "marie.curie@sorbonne.fr"],
+  ["Ma\nx",     "Pla\r\nck", "max@mpg.de"]
 ];
 
 var input_f = [
   'FirstName,"LastName",Email\r\nAlbert,Einstein,emc2@princeton.edu\r',   // terminator on chunk boundary
-  '\nMarie,Curie,marie.curie@sorbonne.fr\r\nMax,Planck,max@mpg.de'        // no terminator on last row
+  '\nMarie,Curie,marie.curie@sorbonne.fr\r\nMa\nx,"Pla\r\nck",max@mpg.de' // terminators in data and no terminator on last row
 ];
 
 var input_o = [
   'FirstName|^LastName^|Email$Albert|Einstein|emc2@princeton.edu$',       // alternate options
-  'Marie|Curie|marie.curie@sorbonne.fr$Max|Planck|max@mpg.de$'
+  'Marie|Curie|marie.curie@sorbonne.fr$Ma\nx|Pla\r\nck|max@mpg.de$'
 ];
 
 var output = [];
