@@ -1,6 +1,4 @@
-
 IncrementalCSV = function(options) {
-  console.log(typeof(options));
   if (options && typeof(options) === 'function') {
     this.options = {
       onRecord: options
